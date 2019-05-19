@@ -25,5 +25,6 @@
       (while true
         (do
           (STM.println "test")
-          (Dout.set led 1)
-          (Dout.set led2 1))))))
+          (Dout.flip led)
+          (STM.delay 300)
+          (Dout.flip led2))))))

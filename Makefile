@@ -41,7 +41,6 @@ LDFLAGS = -Wl,-T,STM32F301_flash.ld
 LIBS    = -lm -lc -lnosys
 
 SRC = out/main.c \
-	stm32f3xx_it.c \
 	system_stm32f3xx.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_cortex.c \
@@ -50,8 +49,6 @@ SRC = out/main.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_gpio.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc_ex.c \
-	#$(wildcard lib/*.c) \
-	#$(WRLIB)/str_buffer.c \
 
 
 OBJDIR = .
