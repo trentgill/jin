@@ -1,15 +1,10 @@
-;(load "Macros.carp")
-;(load "Interfaces.carp")
+(load "Macros.carp")
+(load "Interfaces.carp")
 
-;(load "Maybe.carp") ;for Result
-;(load "Result.carp") ;for IO
-;(load "Int.carp") ;for String
-;(load "Char.carp") ;for Array
-;(load "Tuples.carp") ;for Array
-;(load "Array.carp") ;for String
-;(load "String.carp") ;for IO 'fmt
-;(load "Format.carp") ;for IO 'fmt'
-;(load "IO.carp") ;println
+;(load "Maybe.carp")
+;(load "Result.carp")
+;(load "Int.carp")
+;(load "Tuples.carp")
 
 (load "lib/stm.carp")
 (load "lib/dout.carp")
