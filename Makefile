@@ -43,7 +43,6 @@ LIBS    = -lm -lc -lnosys
 SRC = out/main.c \
 	stm32f3xx_it.c \
 	system_stm32f3xx.c \
-	stm32f3xx_hal_msp.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_cortex.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_flash.c \

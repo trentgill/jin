@@ -1,4 +1,4 @@
-#include "system.h"
+#include "stm.h"
 
 #include <stm32f3xx_hal.h>
 
@@ -6,13 +6,13 @@
 void SystemClock_Config(void);
 
 // public defns
-void STM32_Init(void)
+void STM_Init(void)
 {
     HAL_Init();
     SystemClock_Config();
 }
 
-void SYS_println( char** s ){ printf("%s\n", *s); }
+void STM_println( char** s ){ printf("%s\n", *s); }
 
 // private defns
 void SystemClock_Config(void)

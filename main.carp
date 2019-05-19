@@ -11,7 +11,7 @@
 ;(load "Format.carp") ;for IO 'fmt'
 ;(load "IO.carp") ;println
 
-(load "lib/system.carp")
+(load "lib/stm.carp")
 (load "lib/dout.carp")
 
 (system-include "carp_memory.h") ;CARP_MALLOC
@@ -19,11 +19,11 @@
 
 (defn main []
   (do
-    (STM32.init)
+    (STM.init)
     (let [led  (Dout.init \B 4)
           led2 (Dout.init \B 5)]
       (while true
         (do
-          (STM32.println "test")
+          (STM.println "test")
           (Dout.set led 1)
           (Dout.set led2 1))))))
