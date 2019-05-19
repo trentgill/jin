@@ -44,3 +44,6 @@ DS_Store
 *.dSYM/
 *.lst
 *.s
+
+# swap files
+*.swp
