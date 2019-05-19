@@ -1,13 +1,15 @@
 (load "Macros.carp")
 (load "Interfaces.carp")
 
-(load "Maybe.carp")
 (load "lib/system.carp")
 (load "lib/dout.carp")
+
+(system-include "carp_memory.h") ;CARP_MALLOC
+(system-include "string.h") ;strlen
 
 (defn main []
   (do
     (STM32.init)
-    (let [led &(Maybe.Just (Dout.init))]
+    (let [led (Dout.init)]
       (while true
-        (Dout.set (Maybe.ptr @led) 1)))))
+        (Dout.set led 0)))))

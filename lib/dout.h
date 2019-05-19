@@ -6,8 +6,8 @@ typedef struct{
     GPIO_TypeDef* gpio;
     uint16_t      pin;
     int           state;
-} dout_t;
+} Dout;
 
-dout_t dout_init(void);
-void dout_set( dout_t* out, int state );
-void dout_flip( dout_t* out );
+Dout* dout_init(void);
+void dout_set( Dout* out, int state );
+void dout_flip( Dout* out );
