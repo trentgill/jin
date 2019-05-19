@@ -1,6 +1,7 @@
 TARGET=main
 EXECUTABLE=main.elf
 
+CARP=../../carp/Carp
 CUBE=submodules/STM32_Cube_F3/Drivers
 HALS=STM32F3xx_HAL_Driver/Src
 #WRLIB=../../wrLib
@@ -24,6 +25,7 @@ STM32_INCLUDES = \
 	-I$(CUBE)/CMSIS/Device/ST/STM32F3xx/Include/ \
 	-I$(CUBE)/CMSIS/Include/ \
 	-I$(CUBE)/STM32F3xx_HAL_Driver/Inc/ \
+	-I$(CARP)/core/ \
 #    -I$(WRLIB)/
 
 OPTIMIZE       = -O2
@@ -38,7 +40,7 @@ AFLAGS	= $(MCFLAGS)
 LDFLAGS = -Wl,-T,STM32F301_flash.ld
 LIBS    = -lm -lc -lnosys
 
-SRC = main.c \
+SRC = out/main.c \
 	stm32f3xx_it.c \
 	system_stm32f3xx.c \
 	stm32f3xx_hal_msp.c \
@@ -49,7 +51,7 @@ SRC = main.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_gpio.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc_ex.c \
-	$(wildcard lib/*.c) \
+	#$(wildcard lib/*.c) \
 	#$(WRLIB)/str_buffer.c \
 
 
@@ -79,6 +81,9 @@ flash: $(BIN)
 
 %.s: %.c
 	$(CC) -ggdb $(CFLAGS) -S $< -o $@
+
+out/main.c: main.carp
+	carp build.carp --no-core
 
 Startup.o: $(STARTUP)
 	$(CC) -ggdb $(CFLAGS) -c $< -o $@
