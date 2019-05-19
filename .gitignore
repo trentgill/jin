@@ -45,6 +45,7 @@ out/*
 *.dSYM/
 *.lst
 *.s
+trace*
 
 # swap files
 *.swp
