@@ -1,0 +1,7 @@
+(load "Macros.carp")
+
+(relative-include "system.c")
+
+(defmodule STM32
+  (register init (Fn [] ()) "STM32_Init")
+)

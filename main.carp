@@ -1,0 +1,13 @@
+(load "Macros.carp")
+(load "Interfaces.carp")
+
+(load "Maybe.carp")
+(load "lib/system.carp")
+(load "lib/dout.carp")
+
+(defn main []
+  (do
+    (STM32.init)
+    (let [led &(Maybe.Just (Dout.init))]
+      (while true
+        (Dout.set (Maybe.ptr @led) 1)))))
