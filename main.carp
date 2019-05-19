@@ -1,5 +1,15 @@
-(load "Macros.carp")
-(load "Interfaces.carp")
+;(load "Macros.carp")
+;(load "Interfaces.carp")
+
+;(load "Maybe.carp") ;for Result
+;(load "Result.carp") ;for IO
+;(load "Int.carp") ;for String
+;(load "Char.carp") ;for Array
+;(load "Tuples.carp") ;for Array
+;(load "Array.carp") ;for String
+;(load "String.carp") ;for IO 'fmt
+;(load "Format.carp") ;for IO 'fmt'
+;(load "IO.carp") ;println
 
 (load "lib/system.carp")
 (load "lib/dout.carp")
@@ -10,6 +20,10 @@
 (defn main []
   (do
     (STM32.init)
-    (let [led (Dout.init)]
+    (let [led  (Dout.init \B 4)
+          led2 (Dout.init \B 5)]
       (while true
-        (Dout.set led 0)))))
+        (do
+          (STM32.println "test")
+          (Dout.set led 1)
+          (Dout.set led2 1))))))

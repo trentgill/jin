@@ -8,6 +8,6 @@ typedef struct{
     int           state;
 } Dout;
 
-Dout* dout_init(void);
+Dout* dout_init( char gpio, int pin );
 void dout_set( Dout* out, int state );
 void dout_flip( Dout* out );

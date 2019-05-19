@@ -4,4 +4,5 @@
 
 (defmodule STM32
   (register init (Fn [] ()) "STM32_Init")
+  (register println (Fn [(Ref String)] ()) "SYS_println")
 )

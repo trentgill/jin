@@ -76,6 +76,10 @@ $(BIN): $(EXECUTABLE)
 flash: $(BIN)
 	st-flash write $(BIN) 0x08000000
 
+debug: $(BIN)
+	st-flash write $(BIN) 0x08000000
+	stlink-trace -c 8
+
 %.o: %.c
 	$(CC) -ggdb -fno-common $(CFLAGS) -c $< -o $@
 
@@ -89,5 +93,6 @@ Startup.o: $(STARTUP)
 	$(CC) -ggdb $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f Startup.lst $(TARGET).lst $(OBJS) $(AUTOGEN)  $(TARGET).out  $(TARGET).hex  $(TARGET).map \
-	 $(TARGET).dmp  $(EXECUTABLE)
+	rm -f Startup.lst $(TARGET).lst $(OBJS) $(AUTOGEN) \
+		$(TARGET).out  $(TARGET).hex  $(TARGET).map \
+		$(TARGET).dmp  $(EXECUTABLE) out/main.c \

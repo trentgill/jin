@@ -8,29 +8,28 @@
 static inline void dout_write( Dout* o );
 
 // public defns
-Dout* dout_init(void)
+Dout* dout_init( char gpio, int pin )
 {
-// debug led hardcoded
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-
     Dout* d = malloc( sizeof( Dout ));
     if( !d ){ printf("dout malloc!\n"); return NULL; }
-    d->gpio  = GPIOB;
-    d->pin   = GPIO_PIN_4;
-    d->state = 0;
-    //Dout d = { .gpio  = GPIOB
-    //           , .pin   = GPIO_PIN_4
-    //           , .state = 0
-    //           };
 
-    GPIO_InitTypeDef gpio;
-    gpio.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio.Pull = GPIO_NOPULL;
-    gpio.Pin  = GPIO_PIN_4;
-    HAL_GPIO_Init(GPIOB, &gpio);
+    switch(gpio){
+        case 'a': case 'A': __HAL_RCC_GPIOA_CLK_ENABLE(); d->gpio = GPIOA; break;
+        case 'b': case 'B': __HAL_RCC_GPIOB_CLK_ENABLE(); d->gpio = GPIOB; break;
+        case 'c': case 'C': __HAL_RCC_GPIOC_CLK_ENABLE(); d->gpio = GPIOC; break;
+        case 'd': case 'D': __HAL_RCC_GPIOD_CLK_ENABLE(); d->gpio = GPIOD; break;
+        default: printf("dout pin not found\n"); return NULL;
+    }
+    d->pin   = 1 << pin;
+    d->state = 0;
+
+    GPIO_InitTypeDef g = { .Mode = GPIO_MODE_OUTPUT_PP
+                         , .Pull = GPIO_NOPULL
+                         , .Pin  = d->pin
+                         };
+    HAL_GPIO_Init(d->gpio, &g);
 
     return d;
-    //return &d;
 }
 
 void dout_set( Dout* out, int state )
