@@ -1,7 +1,6 @@
 TARGET=main
 EXECUTABLE=main.elf
 
-CARP=../../carp/Carp
 CUBE=submodules/STM32_Cube_F3/Drivers
 HALS=STM32F3xx_HAL_Driver/Src
 #WRLIB=../../wrLib
@@ -25,7 +24,7 @@ STM32_INCLUDES = \
 	-I$(CUBE)/CMSIS/Device/ST/STM32F3xx/Include/ \
 	-I$(CUBE)/CMSIS/Include/ \
 	-I$(CUBE)/STM32F3xx_HAL_Driver/Inc/ \
-	-I$(CARP)/core/ \
+	-I$(CARP_DIR)/core/ \
 #    -I$(WRLIB)/
 
 OPTIMIZE       = -O2
