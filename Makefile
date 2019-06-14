@@ -59,6 +59,7 @@ SRC = out/main.c \
 	lib/dout.c \
 	lib/gpio.c \
 	lib/stm.c \
+	lib/i2c.c \
 
 
 OBJDIR = .
