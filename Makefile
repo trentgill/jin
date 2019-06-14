@@ -48,6 +48,8 @@ SRC = out/main.c \
 	system_stm32f3xx.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_cortex.c \
+	$(CUBE)/$(HALS)/stm32f3xx_hal_dma.c \
+	$(CUBE)/$(HALS)/stm32f3xx_hal_i2c.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_flash.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_flash_ex.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_gpio.c \
