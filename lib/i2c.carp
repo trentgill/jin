@@ -1,0 +1,13 @@
+(load "Macros.carp")
+
+(relative-include "i2c.h")
+
+(register-type I2C)
+
+(defmodule I2C
+  (register init (λ [Char Int
+                     Char Int
+                     Int
+                     (Fn [Int] ())] I2C) "i2c_init")
+  (register send (λ [(Ptr I2C) Int Int] ()) "i2c_send")
+)
