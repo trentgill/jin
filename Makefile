@@ -53,6 +53,10 @@ SRC = out/main.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_gpio.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc.c \
 	$(CUBE)/$(HALS)/stm32f3xx_hal_rcc_ex.c \
+	lib/din.c \
+	lib/dout.c \
+	lib/gpio.c \
+	lib/stm.c \
 
 
 OBJDIR = .

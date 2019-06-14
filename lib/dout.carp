@@ -1,6 +1,6 @@
 (load "Macros.carp")
 
-(relative-include "dout.c")
+(relative-include "dout.h")
 
 ;(deftype Dout [])
 ;(register-type Dout [] "Dout")
