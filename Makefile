@@ -32,7 +32,7 @@ STM32_INCLUDES = \
 	-I$(CARP_DIR)/core/ \
 #    -I$(WRLIB)/
 
-OPTIMIZE       = -O2
+OPTIMIZE       = -Os
 
 CFLAGS += -std=c99
 CFLAGS += $(MCFLAGS)
