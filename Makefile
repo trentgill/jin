@@ -32,16 +32,19 @@ STM32_INCLUDES = \
 	-I$(CARP_DIR)/core/ \
 #    -I$(WRLIB)/
 
-OPTIMIZE       = -Os
+OPTIMIZE       = -O2
 
 CFLAGS += -std=c99
 CFLAGS += $(MCFLAGS)
 CFLAGS += $(OPTIMIZE)
 CFLAGS += $(DEFS) -I. -I./ $(STM32_INCLUDES)
 CFLAGS += -fsingle-precision-constant -Wdouble-promotion
+CFLAGS += -ffunction-sections -fdata-sections
+#CFLAGS += -flto
 AFLAGS	= $(MCFLAGS) 
 
-LDFLAGS = -Wl,-T,STM32F301_flash.ld
+LDFLAGS = -Wl,-T,STM32F301_flash.ld,-flto,-gc-sections
+#LDFLAGS = -Wl,-T,STM32F301_flash.ld
 LIBS    = -lm -lc -lnosys
 
 SRC = out/main.c \
