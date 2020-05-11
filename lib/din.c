@@ -5,7 +5,7 @@
 
 #include "gpio.h"
 
-void(*events[16])(int,int); // limited to 1-event per exti
+void(*events[16])(int); // limited to 1-event per exti
 GPIO_TypeDef* e_port[16];
 
 // private declarations
@@ -25,7 +25,7 @@ Din din_init( char gpio, int pin )
     return din;
 }
 
-Din din_event( char gpio, int pin, void (*handler)(int,int) )
+Din din_event( char gpio, int pin, void (*handler)(int) )
 {
     Din din = { .port    = gpio_enable( gpio )
               , .pin     = gpio_get_pin( pin )
@@ -73,7 +73,7 @@ void HAL_GPIO_EXTI_Callback( uint16_t GPIO_Pin )
 {
     int p = gpio_from_pin( GPIO_Pin );
     if( events[p] != NULL ){
-        (events[p])(p, HAL_GPIO_ReadPin( e_port[p], GPIO_Pin ));
+        (events[p])(HAL_GPIO_ReadPin( e_port[p], GPIO_Pin ));
     }
 }
 

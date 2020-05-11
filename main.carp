@@ -4,19 +4,26 @@
 (load "lib/stm.carp")
 (load "lib/dout.carp")
 (load "lib/din.carp")
-(load "lib/i2c.carp")
+;(load "lib/i2c.carp")
 
 (system-include "carp_memory.h") ;CARP_MALLOC
 (system-include "string.h") ;strlen
 
-(defn tr-handler [ch state]
-  (STM.println "call ii send"))
+
+;; event handlers
+
+;(defn tr-handler [ch state]
+;  (STM.println "do something w trigger signal"))
+;  ;(I2C.send &ii 0xW/ "cmd"))
 
 (defn detect-handler [ch state]
   (STM.println "do something w detect signal"))
 
-(defn i2c-handler [data]
-  (STM.println "do something w i2c data"))
+;(defn i2c-handler [data]
+;  (STM.println "do something w i2c data"))
+
+
+;; setup & main loop
 
 (defn main []
   (do
@@ -24,9 +31,13 @@
     (let [led  (Dout.init \B 4)
           led2 (Dout.init \B 5)
           out  (Dout.init \A 12)
-          tr1  (Din.event \A 1 tr-handler)
-          det1 (Din.event \A 2 detect-handler)
-          ii   (I2C.init \b 6 \b 7 66 i2c-handler)]
+;          ii   (I2C.init \b 6 \b 7 66 i2c-handler)
+          tr1  (Din.event \A 1
+                (fn [state] (Dout.flip led)))
+          tr2  (Din.event \A 3
+                (fn [state] (Dout.flip out)))
+          det1 (Din.event \A 2
+                (fn [state] (STM.println "do something w detect")))]
       (while true
         (do
           (STM.println "test")

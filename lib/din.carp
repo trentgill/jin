@@ -5,6 +5,6 @@
 (register-type Din)
 (defmodule Din
   (register init (λ [Char Int] (Ptr Din)) "din_init")
-  (register event (λ [Char Int (Fn [Int Int] ())] Din) "din_event")
+  (register event (λ [Char Int (Fn [Int] ())] Din) "din_event")
   (register get (λ [(Ptr Din)] Int) "din_get")
 )
